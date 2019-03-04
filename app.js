@@ -4,7 +4,7 @@ var User = {
     return m
       .request({
         method: "GET",
-        url: "http://rem-rest-api.herokuapp.com/api/users",
+        url: "https://rem-rest-api.herokuapp.com/api/users",
         withCredentials: true
       })
       .then(function(result) {
@@ -16,7 +16,7 @@ var User = {
     return m
       .request({
         method: "GET",
-        url: "http://rem-rest-api.herokuapp.com/api/users/:id",
+        url: "https://rem-rest-api.herokuapp.com/api/users/:id",
         data: { id: id },
         withCredentials: true
       })
@@ -27,7 +27,7 @@ var User = {
   save: function() {
     return m.request({
       method: "PUT",
-      url: "http://rem-rest-api.herokuapp.com/api/users/:id",
+      url: "https://rem-rest-api.herokuapp.com/api/users/:id",
       data: User.current,
       withCredentials: true
     });
