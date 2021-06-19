@@ -10,29 +10,30 @@
 
 <body x-data="vcolor" x-init="$nextTick(() => { getColors() })" class="bg-gray-200" :style="gcolor.style">
   <div class="container mx-auto p-4">
-    <div class="grid grid-cols-6 gap-4">
+    <div class="grid grid-cols-3 gap-4 lg:grid-cols-6">
       <template x-for="(color,index) in colors" :key="index">
-        <div class="col-2 rounded-full" @click="setColor(color)">
-          <div class="m-1 p-1"
+        <div class="rounded-full" @click="setColor(color)">
+          <div class="m-2 p-2 w-64"
             x-data="{rgb:{backgroundColor:'rgb('+color.rgb[0]+','+color.rgb[1]+','+color.rgb[2]+')'}}">
-            <div class="" :style="rgb">
-              <p class="" x-text="color.name"></p>
-              <p class="" x-text="color.pinyin"></p>
-              <p class="" x-text="rgb.backgroundColor"></p>
-              <p class="" x-text="color.hex"></p>
+            <div class="bg-white rounded shadow border text-center" :style="rgb">
+              <p class="px-4 py-2 space-y-2 text-2xl text-black" x-text="color.name"></p>
+              <p class="px-4 py-1 text-xl text-black font-medium" x-text="color.pinyin"></p>
+              <p class="px-4 py-1 text-sm text-black font-semibold" x-text="rgb.backgroundColor"></p>
+              <p class="px-4 py-1 text-sm text-black font-semibold" x-text="'#'+color.hex"></p>
             </div>
-            <div class="" x-data={r0:color.rgb[0]*100/255,r1:color.rgb[1]*100/255,r2:color.rgb[2]*100/255}>
+            <div class="py-4"
+              x-data="{r0:color.rgb[0]*100/255+'%',r1:color.rgb[1]*100/255+'%',r2:color.rgb[2]*100/255+'%'}">
               <div class="h-1 my-1 relative max-w-xl rounded-full overflow-hidden">
                 <div class="w-full h-full bg-gray-200 absolute"></div>
-                <div class="h-full bg-red-500 absolute" :style="{width:r0+'%'}"></div>
+                <div class="h-full bg-red-500 absolute" :style="{width:r0}"></div>
               </div>
               <div class="h-1 my-1 relative max-w-xl rounded-full overflow-hidden">
                 <div class="w-full h-full bg-gray-200 absolute"></div>
-                <div class="h-full bg-green-500 absolute" :style="{width:r1+'%'}"></div>
+                <div class="h-full bg-green-500 absolute" :style="{width:r1}"></div>
               </div>
               <div class="h-1 my-1 relative max-w-xl rounded-full overflow-hidden">
                 <div class="w-full h-full bg-gray-200 absolute"></div>
-                <div class="h-full bg-blue-500 absolute" :style="{width:r2+'%'}"></div>
+                <div class="h-full bg-blue-500 absolute" :style="{width:r2}"></div>
               </div>
             </div>
           </div>
@@ -40,7 +41,6 @@
       </template>
     </div>
   </div>
-
 </body>
 
 <script src="//unpkg.com/alpinejs" defer></script>
